@@ -1,0 +1,146 @@
+body { /* Estilos generales del cuerpo */
+  font-family: 'Segoe UI', sans-serif; /* Tipo de letra */
+  margin: 0; /* Quita el margen por defecto */
+  background: #f0f4f8; /* Color de fondo */
+  color: #00913F; /* Color del texto */
+  display: flex; /* Activa el modo Flexbox */
+  flex-direction: column; /* Organiza en columna */
+  align-items: center; /* Centra horizontalmente */
+  padding: 30px; /* Espacio interior */
+}
+
+h1 { /* Título principal */
+  color: #3CF527; /* Verde brillante */
+  text-align: center; /* Centra el texto */
+}
+
+.contenedor { /* Caja principal del contenido */
+  max-width: 700px; /* Ancho máximo */
+  background: #FFFF; /* Fondo blanco */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Sombra suave */
+  padding: 20px 30px; /* Espaciado interno */
+  margin-top: 20px; /* Separación superior */
+}
+
+input[type=range], input[type=number] { /* Entradas de número y rango */
+  width: 100%; /* Ocupan todo el ancho */
+}
+
+.simulacion { /* Sección de simulación */
+  margin-top: 30px; /* Espacio arriba */
+  text-align: center; /* Centra el texto */
+}
+
+.resorte { /* Estilo del resorte */
+  height: 20px; /* Altura */
+  width: 100px; /* Ancho inicial */
+  background: linear-gradient(90deg, #888 20%, transparent 20%) repeat-x; /* Patrón de resorte */
+  background-size: 20px 20px; /* Tamaño del patrón */
+  margin: 20px auto; /* Centrado con márgenes */
+  transition: width 0.5s ease; /* Animación al estirarse */
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+.resultado { /* Estilo para mostrar el resultado del cálculo */
+  margin-top: 20px; /* Espacio superior */
+  font-weight: bold; /* Texto en negrita */
+  color: #1a73e8; /* Azul para resaltar */
+}
+
+details { /* Contenedor desplegable (etiqueta <details>) */
+  background: #3CF527; /* Fondo verde claro */
+  border-left: 4px solid #1a73e8; /* Borde azul a la izquierda */
+  border-radius: 6px; /* Bordes redondeados */
+  padding: 10px 15px; /* Espaciado interno */
+  margin-top: 15px; /* Separación superior */
+  cursor: pointer; /* Cambia el cursor a mano al pasar */
+}
+
+summary { /* Título del bloque desplegable */
+  font-weight: bold; /* Texto en negrita */
+  color: #1a73e8; /* Color azul */
+  font-size: 1.1em; /* Tamaño ligeramente más grande */
+  outline: none; /* Quita el contorno al hacer clic */
+}
+
+summary:hover { /* Efecto al pasar el cursor sobre el resumen */
+  text-decoration: underline; /* Subraya el texto */
+}
+
+.prueba { /* Contenedor para una sección de prueba o ejemplo */
+  margin-top: 40px; /* Espacio superior */
+}
+
+.problema { /* Caja para presentar problemas o ejercicios */
+  background: #eef5ff; /* Fondo azul muy claro */
+  border-left: 4px solid #1a73e8; /* Borde azul lateral */
+  padding: 15px; /* Espacio interior */
+  border-radius: 8px; /* Bordes redondeados */
+  margin-top: 15px; /* Espacio superior */
+}
+
+.problema h4 { /* Título dentro del bloque de problema */
+  margin-bottom: 10px; /* Espacio debajo del título */
+  color: #1a73e8; /* Color azul para destacar */
+}
+
+.problema button { /* Botón dentro de la sección de problema */
+  background: #1a73e8; /* Fondo azul */
+  color: white; /* Texto blanco */
+  border: none; /* Sin borde */
+  padding: 8px 15px; /* Espaciado interno (alto y ancho) */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor a mano */
+  transition: background 0.3s; /* Suaviza el cambio de color al pasar el cursor */
+}
+
+.problema button:hover { /* Efecto al pasar el cursor sobre el botón */
+  background: #155ab6; /* Azul más oscuro al pasar el mouse */
+}
+
+.mensaje { /* Contenedor para mostrar mensajes al usuario */
+  margin-top: 10px; /* Espacio superior */
+  font-weight: bold; /* Texto en negrita */
+}
+
+.correcto { /* Estilo para respuestas correctas */
+  color: green; /* Texto verde */
+}
+
+.incorrecto { /* Estilo para respuestas incorrectas */
+  color: red; /* Texto rojo */
+}
+
+footer { /* Pie de página */
+  margin-top: 40px; /* Espacio superior */
+  font-size: 0.9em; /* Tamaño de letra más pequeño */
+  color: #666; /* Gris medio para el texto */
+}
+
+.boton-traduccion { /* Botón de traducción (por ejemplo, cambiar idioma) */
+  background: #1a73e8; /* Fondo azul */
+  color: white; /* Texto blanco */
+  border: none; /* Sin borde */
+  padding: 10px 20px; /* Tamaño del botón */
+  border-radius: 6px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor en forma de mano */
+  margin-top: 10px; /* Espacio superior */
+  transition: background 0.3s; /* Transición suave al cambiar color */
+}
+
+.boton-traduccion:hover { /* Efecto al pasar el cursor sobre el botón de traducción */
+  background: #155ab6; /* Cambia a un azul más oscuro al pasar el mouse */
+}
+
+a { /* Enlaces generales (<a>) */
+  display: block; /* Hace que el enlace se muestre como bloque (ocupa todo el ancho disponible) */
+  margin-top: 20px; /* Espacio superior */
+  text-decoration: none; /* Quita el subrayado por defecto */
+  color: #1a73e8; /* Color azul para el texto del enlace */
+  font-weight: bold; /* Texto en negrita */
+}
+
+a:hover { /* Efecto al pasar el cursor sobre los enlaces */
+  text-decoration: underline; /* Subraya el enlace al pasar el mouse */
+}

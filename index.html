@@ -1,0 +1,239 @@
+<!DOCTYPE html> <!-- Declara el tipo de documento HTML, necesario al inicio de toda página web -->
+<html lang="es"> <!-- Indica que el idioma principal del documento es español -->
+<head> <!-- Contiene la información de la cabecera (no visible directamente en la página) -->
+  <meta charset="UTF-8"> <!-- Establece la codificación de caracteres en UTF-8 (soporta acentos y caracteres especiales) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace que la página sea adaptable a distintos dispositivos -->
+  <title>Ley de Hooke - Simulación Interactiva</title> <!-- Título que aparece en la pestaña del navegador -->
+  <link rel="StyleSheet" href="estilospagina.css" type="text/css"> <!-- Enlaza el archivo CSS externo para aplicar estilos -->
+</head> <!-- Fin de la cabecera -->
+
+<body> <!-- Contiene todo el contenido visible de la página -->
+
+  <h1 data-text="titulo">Ley de Hooke</h1> <!-- Encabezado principal que muestra el título "Ley de Hooke" -->
+
+  <button id="btnTraducir" class="boton-traduccion">Traducir al inglés</button> <!-- Botón que permitirá traducir el contenido al inglés -->
+
+  <div class="contenedor"> <!-- Contenedor principal del contenido -->
+
+    <p data-text="intro">
+      La <strong>Ley de Hooke</strong> establece que la deformación (<em>x</em>) de un resorte es proporcional a la fuerza aplicada (<em>F</em>): 
+      
+    </p><!-- Párrafo introductorio explicando la Ley de Hooke con formato en negritas (<strong>) y cursivas (<em>) -->
+
+    <p style="text-align:center; font-size: 1.3em; font-weight:bold;">
+      F = k · x
+      
+    </p><!-- Ecuación de la Ley de Hooke centrada y en negrita -->
+
+    <ul> <!-- Lista desordenada para explicar los términos de la fórmula -->
+      <li data-text="F">F es la fuerza aplicada (N)</li> <!-- Elemento de lista que describe la variable F -->
+      <li data-text="k">k es la constante del resorte (N/m)</li> <!-- Elemento de lista que describe la variable k -->
+      <li data-text="x">x es la deformación (m)</li> <!-- Elemento de lista que describe la variable x -->
+    </ul>
+
+    <details> <!-- Crea un elemento desplegable para mostrar información adicional -->
+      <summary data-text="masInfoTitulo">Más información sobre la Ley de Hooke</summary> <!-- Título visible del apartado desplegable -->
+      <p data-text="masInfo1">
+        La Ley de Hooke fue propuesta por el físico británico <strong>Robert Hooke</strong> en el siglo XVII. 
+        Describe el comportamiento elástico de materiales que recuperan su forma original 
+        después de ser deformados, siempre que la deformación no supere el límite elástico del material. 
+      </p><!-- Párrafo dentro del detalle explicando el contexto histórico de la Ley de Hooke -->
+
+      <p data-text="masInfo2">
+        <!-- Segundo párrafo (continúa aquí el contenido que falta en tu código) -->
+      </p>
+        Esta ley se aplica ampliamente en ingeniería, física y diseño de estructuras, 
+        ya que permite calcular cómo los materiales reaccionan ante fuerzas externas. 
+        En la práctica, se utiliza para medir la rigidez de resortes, 
+        vigas, y otros elementos elásticos.
+      </p> <!-- Texto que explica las aplicaciones prácticas de la Ley de Hooke -->
+    </details> <!-- Cierra el elemento desplegable "details" -->
+
+    <hr> <!--Se agrega una linea horizontal que separa partes de la pagina-->
+
+    <div class="simulacion"> <!--Se crea un apartado de simulacion-->
+      <h3 data-text="simulacionTitulo">Simulación Interactiva</h3><!--Se pone el texto "Ley de Hooke"-->
+
+      <label data-text="kLabel">Constante del resorte (k):</label> <!--Se escribe un texto que dice "Constante del resorte"-->
+      <span id="kVal">100</span> N/m<!--Se le da un valor inicial-->
+      <input type="range" id="k" min="10" max="300" value="100"><!--Le agrega un rango de cantidad al valor de K-->
+
+      <br><br><!--Hace un salto de línea-->
+
+      <label data-text="fLabel">Fuerza aplicada (F):</label> <!--Se pone el texto "Fuerza aplicada"-->
+      <span id="fVal">50</span> N<!--Se le da un valor inicial-->
+      <input type="range" id="f" min="10" max="200" value="50"><!--Le agrega un rango de cantidad al valor de f-->
+
+      <div class="resorte" id="resorte"></div><!--Se agrega la clase resorte-->
+
+      <div class="resultado"> <!-- Sección que contiene la simulación interactiva -->
+        <span data-text="xLabel">Deformación (x):</span> <span id="xVal">0.5</span> m<!--Se muestra la deformación con un valor inicial-->
+    </div> <!-- Fin de la sección de simulación -->
+
+    <div class="prueba"> <!--Se crea un apartado prueba-->
+      <h3 data-text="pruebaTitulo"> Prueba tus conocimientos</h3> <!--Se pone un texto que dice "Prueba tus conocimientos-->
+      <p data-text="pruebaIntro">Resuelve los siguientes problemas aplicando la Ley de Hooke:</p><!--Agrega un parrafo de texto-->
+
+      <div class="problema"><!--Se crea el apartado del problema-->
+        <h4 data-text="problema1Titulo">Problema 1</h4><!--Se pone el texto que dice "Problema 1"-->
+        <p data-text="problema1Texto">
+          Un resorte con una constante de 200 N/m se estira con una fuerza de 40 N.  
+          ¿Cuál es la deformación del resorte?
+        </p> <!-- Enunciado del problema 1 -->
+        <label data-text="respuesta1Label">Tu respuesta (en metros):</label><!--Se escribe un texto-->
+        <input type="number" id="respuesta1" step="0.01"><!--Se crea un apartado para colocar la respuesta-->
+        <button data-text="btnComprobar" onclick="comprobar(1)">Comprobar</button><!--Se crea un botón para comprobar si la respuesta esta correcta-->
+        <div id="mensaje1" class="mensaje"></div>
+      </div>
+
+      <div class="problema"> <!-- Se crea el segundo bloque de problema -->
+        <h4 data-text="problema2Titulo">Problema 2</h4> <!-- Título del segundo problema -->
+        <p data-text="problema2Texto">
+          Si un resorte se deforma 0.15 m al aplicarle una fuerza de 30 N,  
+          ¿cuál es la constante elástica del resorte?
+        </p><!-- Enunciado del problema 2 -->
+        <label data-text="respuesta2Label">Tu respuesta (en N/m):</label><!-- Etiqueta para la respuesta -->
+        <input type="number" id="respuesta2" step="0.1"><!-- Campo numérico para escribir la respuesta -->
+        <button data-text="btnComprobar" onclick="comprobar(2)">Comprobar</button> <!-- Botón que ejecuta la función comprobar() -->
+        <div id="mensaje2" class="mensaje"></div><!-- Espacio donde se mostrará el resultado -->
+      </div><!-- Fin del segundo problema -->
+    </div><!-- Cierra el contenedor .prueba -->
+  </div><!-- Cierra el contenedor .contenedor principal -->
+
+  <a href="memorama.html" data-text="juegoLink">Un pequeño juego interactivo de la ley de Hooke</a><!--Hipervinculo para mandar a otra pagina-->
+
+  <footer> <!--Se crea un pie de pagina-->
+    © 2025 Proyecto segundo parcial <!-- Texto de derechos -->
+  </footer><!-- Fin del pie de página -->
+
+  <script> <!-- Inicio del código JavaScript-->
+    const kSlider = document.getElementById('k');/*Crea una variable que es constante*/
+    const fSlider = document.getElementById('f');/* Obtiene el elemento con id="f" y lo guarda en fSlider */
+    const kVal = document.getElementById('kVal');/* Muestra el valor actual de k */
+    const fVal = document.getElementById('fVal');/* Muestra el valor actual de F */
+    const xVal = document.getElementById('xVal');/* Muestra la deformación calculada */
+    const resorte = document.getElementById('resorte');/* Referencia al div que simula el resorte */
+
+
+    function actualizar() {/*Crea la función actualizar*/
+      const k = parseFloat(kSlider.value);/*Convierte la variable en un tipo de dato float*/
+      const F = parseFloat(fSlider.value);/* Convierte el valor de fSlider a número decimal */
+      const x = (F / k).toFixed(2);/* Calcula la deformación x = F/k y redondea a 2 decimales */
+      kVal.textContent = k;/* Actualiza el texto mostrado de k */
+      fVal.textContent = F;/* Actualiza el texto mostrado de F */
+      xVal.textContent = x;/* Muestra el valor calculado de x */
+      resorte.style.width = `${100 + x * 200}px`; /* Cambia el ancho del resorte según la deformación */
+    }
+
+    kSlider.addEventListener('input', actualizar);/*Modifica el valor y lo registra para la funcion actualizar*/
+    fSlider.addEventListener('input', actualizar);
+    actualizar(); /*Llama a la función actualizar() para que se ejecute una vez al cargar la página*/
+
+  /*--- Función para comprobar las respuestas ---*/
+
+    function comprobar(num) {/*Crea la función comprobar*/
+      let correcta = 0;/*Hace que la variable "correcta" tenga un valor de 0*/
+      let respuesta = 0;/*Hace que la variable "respuesta" tenga un valor de 0*/
+      const mensaje = document.getElementById('mensaje' + num); ; /*Obtiene el elemento del mensaje correspondiente al problema*/
+
+      if (num === 1) {/*Si num es igual a 1*/
+        correcta = 0.2; // x = F/k = 40/200
+        respuesta = parseFloat(document.getElementById('respuesta1').value); /*Convierte a número el valor ingresado en el campo de respuesta1*/
+      } else if (num === 2) {  /*Si num es igual a 2 (Problema 2)*/
+        correcta = 200; // k = F/x = 30/0.15
+        respuesta = parseFloat(document.getElementById('respuesta2').value); /*Convierte a número el valor ingresado en el campo de respuesta2*/
+      }
+
+      if (isNaN(respuesta)) { /*Verifica si el valor ingresado no es un número*/
+        mensaje.textContent = idioma === "es"
+          ? "Por favor, ingresa un valor numérico." /*Mensaje en español*/
+          : "Please enter a numeric value."; /*Mensaje en inglés*/
+        mensaje.className = "mensaje incorrecto";/*Cambia el estilo a mensaje de error*/
+        return; /*Termina la función aquí*/
+      }
+
+      const tolerancia = 0.05 * correcta; /*Define un margen de error del 5% para aceptar la respuesta*/
+      if (Math.abs(respuesta - correcta) <= tolerancia) {  /*Si la respuesta está dentro del margen de error*/
+        mensaje.textContent = idioma === "es" ? "✅ ¡Correcto!" : "✅ Correct!"; /*Muestra mensaje de acierto en el idioma correspondiente*/
+        mensaje.className = "mensaje correcto"; /*Aplica estilo verde de correcto*/
+      } else {  /*Si la respuesta no está dentro del margen permitido*/
+        mensaje.textContent =
+          idioma === "es"
+            ? `❌ Incorrecto. La respuesta correcta es ${correcta}.` /*Mensaje en español*/
+            : `❌ Incorrect. The correct answer is ${correcta}.`;  /*Mensaje en inglés*/
+        mensaje.className = "mensaje incorrecto";  /*Mensaje en inglés*/
+      }
+    }
+
+    // --- Traducción ---
+    const btnTraducir = document.getElementById("btnTraducir"); /*Declara una variable que guarda el idioma actual (por defecto español)*/
+    let idioma = "es";/*Declara una variable que guarda el idioma actual (por defecto español)*/
+
+    /* --- Diccionario de textos para los dos idiomas: Español e Inglés --- */
+    const textos = { /*Crea un objeto llamado "textos" que contiene las traducciones*/
+        es: { /*Define el idioma español (es)*/
+        titulo: "Ley de Hooke", /*Título principal en español*/
+        intro: "La <strong>Ley de Hooke</strong> establece que la deformación (<em>x</em>) de un resorte es proporcional a la fuerza aplicada (<em>F</em>):", /*Texto introductorio*/
+          F: "F es la fuerza aplicada (N)", /*Explicación del símbolo F*/
+          k: "k es la constante del resorte (N/m)", /*Explicación del símbolo k*/
+          x: "x es la deformación (m)", /*Explicación del símbolo x*/
+          masInfoTitulo: "Más información sobre la Ley de Hooke", /*Título del apartado desplegable*/
+          masInfo1: "La Ley de Hooke fue propuesta por el físico británico <strong>Robert Hooke</strong> en el siglo XVII. Describe el comportamiento elástico de materiales que recuperan su forma original después de ser deformados, siempre que la deformación no supere el límite elástico del material.", /*Primer párrafo explicativo*/
+          masInfo2: "Esta ley se aplica ampliamente en ingeniería, física y diseño de estructuras, ya que permite calcular cómo los materiales reaccionan ante fuerzas externas. En la práctica, se utiliza para medir la rigidez de resortes, vigas, y otros elementos elásticos.", /*Segundo párrafo explicativo*/
+          simulacionTitulo: "Simulación Interactiva", /*Título de la sección de simulación*/
+          kLabel: "Constante del resorte (k):", /*Etiqueta para el control de la constante k*/
+          fLabel: "Fuerza aplicada (F):", /*Etiqueta para el control de la fuerza F*/
+          xLabel: "Deformación (x):", /*Etiqueta que muestra el valor de la deformación*/
+          pruebaTitulo: "🧠 Prueba tus conocimientos", /*Título de la sección de ejercicios*/
+          pruebaIntro: "Resuelve los siguientes problemas aplicando la Ley de Hooke:", /*Texto introductorio de la sección de problemas*/
+          problema1Titulo: "Problema 1", /*Título del primer problema*/
+          problema1Texto: "Un resorte con una constante de 200 N/m se estira con una fuerza de 40 N. ¿Cuál es la deformación del resorte?", /*Texto del problema 1*/
+          respuesta1Label: "Tu respuesta (en metros):", /*Etiqueta para el campo de respuesta del problema 1*/
+          problema2Titulo: "Problema 2", /*Título del segundo problema*/
+          problema2Texto: "Si un resorte se deforma 0.15 m al aplicarle una fuerza de 30 N, ¿cuál es la constante elástica del resorte?", /*Texto del problema 2*/
+        respuesta2Label: "Tu respuesta (en N/m):", /*Etiqueta para el campo de respuesta del problema 2*/
+      btnComprobar: "Comprobar", /*Texto del botón de comprobación*/
+    juegoLink: "Un pequeño juego interactivo de la ley de Hooke" /*Texto del enlace al juego*/
+  },
+
+    en: { /*Define el idioma inglés (en)*/
+      titulo: "Hooke's Law", /*Título principal en inglés*/
+        intro: "<strong>Hooke's Law</strong> states that the deformation (<em>x</em>) of a spring is proportional to the applied force (<em>F</em>):", /*Texto introductorio*/
+        F: "F is the applied force (N)", /*Explicación del símbolo F*/
+        k: "k is the spring constant (N/m)", /*Explicación del símbolo k*/
+        x: "x is the deformation (m)", /*Explicación del símbolo x*/
+        masInfoTitulo: "More information about Hooke's Law", /*Título del apartado desplegable*/
+        masInfo1: "Hooke's Law was proposed by the British physicist <strong>Robert Hooke</strong> in the 17th century. It describes the elastic behavior of materials that return to their original shape after being deformed, as long as the deformation does not exceed the elastic limit.", /*Primer párrafo explicativo*/
+        masInfo2: "This law is widely applied in engineering, physics, and structural design, as it allows calculating how materials react to external forces. In practice, it is used to measure the stiffness of springs, beams, and other elastic elements.", /*Segundo párrafo explicativo*/
+        simulacionTitulo: "Interactive Simulation", /*Título de la sección de simulación*/
+        kLabel: "Spring constant (k):", /*Etiqueta para el control de la constante k*/
+        fLabel: "Applied force (F):", /*Etiqueta para el control de la fuerza F*/
+        xLabel: "Deformation (x):", // Etiqueta para la variable de deformación (x)
+          pruebaTitulo: "🧠 Test your knowledge", // Título de la sección del test (en inglés)
+          pruebaIntro: "Solve the following problems using Hooke's Law:", // Introducción a los ejercicios
+          problema1Titulo: "Problem 1", // Título del primer problema
+          problema1Texto: "A spring with a constant of 200 N/m is stretched with a force of 40 N. What is the deformation of the spring?", // Enunciado del problema 1
+          respuesta1Label: "Your answer (in meters):", // Etiqueta para la respuesta del primer problema
+          problema2Titulo: "Problem 2", // Título del segundo problema
+          problema2Texto: "If a spring deforms 0.15 m when a force of 30 N is applied, what is the spring constant?", // Enunciado del problema 2
+          respuesta2Label: "Your answer (in N/m):", // Etiqueta para la respuesta del segundo problema
+          btnComprobar: "Check", // Texto del botón que verifica la respuesta (en inglés)
+          juegoLink: "An interactive Hooke’s Law game" // Texto del enlace hacia el juego
+      } // Cierra el objeto del idioma inglés
+    }; // Cierra el objeto "textos" que contiene ambos idiomas
+
+  function cambiarIdioma() { // Declara la función que cambia entre español e inglés
+      idioma = idioma === "es" ? "en" : "es"; // Alterna el idioma actual (si es español, cambia a inglés y viceversa)
+    const elementos = document.querySelectorAll("[data-text]"); // Selecciona todos los elementos con el atributo "data-text"
+      elementos.forEach(el => { // Recorre cada elemento encontrado
+    const clave = el.getAttribute("data-text"); // Obtiene el valor de la clave que indica qué texto debe cambiar
+      el.innerHTML = textos[idioma][clave]; // Reemplaza el contenido del elemento por el texto correspondiente al idioma actual
+    });
+  btnTraducir.textContent = idioma === "es" ? "Traducir al inglés" : "Translate to Spanish"; // Cambia el texto del botón según el idioma actual
+  document.documentElement.lang = idioma; // Cambia el atributo "lang" del documento al idioma actual (para accesibilidad)
+}
+
+   btnTraducir.addEventListener("click", cambiarIdioma); // Asigna la función "cambiarIdioma" al evento de clic del botón de traducción
+  </script> <!-- Cierra el bloque de script -->
+ </body> <!-- Cierra el cuerpo del documento HTML -->
+</html> <!-- Cierra el documento HTML completo -->

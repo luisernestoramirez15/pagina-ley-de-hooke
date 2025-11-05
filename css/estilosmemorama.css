@@ -1,0 +1,58 @@
+body { /* Estilos generales del documento */
+  font-family: 'Segoe UI', sans-serif; /* Fuente principal */
+  background: linear-gradient(135deg, #3CF527, #dc21cc); /* Degradado diagonal de fondo */
+  color: #fff; /* Color del texto (blanco) */
+  text-align: center; /* Centrar texto por defecto */
+  margin: 0; /* Quitar margen por defecto del navegador */
+  padding: 20px; /* Espacio interior alrededor del contenido */
+}
+
+#tablero { /* Contenedor del tablero de cartas */
+  display: grid; /* Usar Grid layout para organizar las cartas */
+  grid-template-columns: repeat(4, 100px); /* 4 columnas de 100px cada una */
+  grid-gap: 15px; /* Espacio entre las celdas */
+  justify-content: center; /* Centrar el grid horizontalmente */
+  margin-top: 30px; /* Separación superior del tablero */
+}
+
+.carta { /* Estilo de cada carta no volteada */
+  width: 100px; /* Ancho fijo */
+  height: 100px; /* Alto fijo */
+  background: #3CF527; /* Fondo verde */
+  border-radius: 10px; /* Esquinas redondeadas */
+  display: flex; /* Flex para centrar contenido interno */
+  align-items: center; /* Centrar verticalmente */
+  justify-content: center; /* Centrar horizontalmente */
+  cursor: pointer; /* Cursor tipo mano para indicar clicable */
+  transition: transform 0.4s; /* Transición suave para transformaciones */
+}
+
+.carta.volteada { /* Estilo aplicado cuando la carta está volteada */
+  background: #3CF527; /* Mantiene fondo (puedes cambiar si quieres otra apariencia) */
+  transform: rotateY(180deg); /* Rotación 3D simulando volteo */
+  cursor: default; /* Cursor normal (no clicable) */
+}
+
+#mensaje { /* Caja para mostrar mensajes al jugador */
+  font-size: 1.5em; /* Tamaño de letra más grande */
+  margin-top: 25px; /* Separación superior */
+}
+
+#reiniciar { /* Botón para reiniciar el juego */
+  background: #ffcc00; /* Fondo amarillo */
+  border: none; /* Sin borde */
+  color: #333; /* Color del texto (gris oscuro) */
+  font-size: 1.1em; /* Tamaño de letra */
+  padding: 10px 20px; /* Relleno interno */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor tipo mano */
+  margin-top: 15px; /* Separación superior */
+  display: none; /* Oculto por defecto (se muestra al ganar) */
+}
+
+img { /* Estilo para imágenes dentro de las cartas */
+  width: 80%; /* Ocupa el 80% del contenedor */
+  height: 80%; /* Ocupa el 80% del contenedor */
+  object-fit: contain; /* Ajusta la imagen sin deformarla */
+  border-radius: 8px; /* Esquinas ligeramente redondeadas */
+}

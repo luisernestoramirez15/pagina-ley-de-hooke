@@ -1,0 +1,96 @@
+<!DOCTYPE html> <!--tipo de documento html-->
+<html lang="es"> <!--estructura basica html-->
+<head> <!--texto en la pestña del navegador-->
+    <meta charset="UTF-8"> <!--establece la codificacion de caracteres-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorama de la Ley de Hooke</title> <!--memorama de la ley de hooke-->
+    <link rel="StyleSheet" href="estilosmemorama.css" type="text/css"> <!--crea un vinculo de estilo a css-->
+</head> <!--se cierra el texto en la pestaña del navegador-->
+
+<body> <!--todas las etiquetas del documento-->
+    <h1>💡 Ley de Hooke 💡</h1> <!--se escribe el titulo de estilo para el juego-->
+
+    <div id="tablero"></div> <!--crea nuestra base de tabla-->
+    <div id="mensaje"></div> <!--crea nuestro espacio para el mensaje-->
+    <button id="reiniciar">Jugar de nuevo</button> <!--crea un boton para reiniciar el juego-->
+
+    <script> //se indica que va a comenzar un bloque de codigo interpretado por el navegador//
+        const imagenes = [ //indica que no se puede cambiar el valor completo de la variable imagenes//
+            "imagenes/creador.jpg",
+            "imagenes/ley.png",
+            "imagenes/liga.jpg",
+            "imagenes/pelota.jpeg",
+            "imagenes/resorte.jpg",
+            "imagenes/trampolin.png"
+        ];
+
+        let cartas = []; //se crea el valor cartas sin ningún valor//
+        let cartasVolteadas = []; //se crea el valor cartasVolteadas sin ningún valor//
+        let bloqueo = false; //crea una variable booleana llamada bloqueo iniciada en false//
+        let aciertos = 0; //inicializa la variable aciertos con valor 0//
+
+        const tablero = document.getElementById("tablero"); //se crea una variable llamada tablero//
+        const mensaje = document.getElementById("mensaje"); //se crea una variable llamada mensaje//
+        const reiniciarBtn = document.getElementById("reiniciar"); //se crea una variable llamada reiniciarBtn//
+
+        function iniciarJuego() { // se crea  la funcion iniciar juego//
+            tablero.innerHTML = ""; //se limpia el tablero//
+            mensaje.textContent = ""; //se limpia el mensaje//
+            reiniciarBtn.style.display = "none"; //oculta el botón de reinicio//
+            aciertos = 0; //reinicia los aciertos//
+
+            cartas = [...imagenes, ...imagenes].sort(() => Math.random() - 0.5); //crea una nueva lista duplicada y mezclada al azar//
+
+            cartas.forEach((src) => { //recorre todas las imágenes//
+                const div = document.createElement("div"); // ← FALTABA declarar "div"
+                div.classList.add("carta"); // Le agrega la clase "carta" para estilos//
+                div.dataset.valor = src; //Guarda el valor de la imagen en el atributo 'data-valor'//
+                div.addEventListener("click", voltearCarta); //Asocia el evento click con la función voltearCarta//
+                tablero.appendChild(div); //Agrega la carta al tablero//
+            });
+        }
+
+        function voltearCarta(e) { //se crea la funcion voltearCarta//
+            const carta = e.target.closest(".carta"); // Obtiene el elemento clicado//
+            if (!carta || bloqueo || carta.classList.contains("volteada")) return; // Evita errores o clics repetidos//
+
+            carta.classList.add("volteada"); // Marca la carta como volteada//
+            const img = document.createElement("img"); // Crea el elemento <img>//
+            img.src = carta.dataset.valor; // Asigna la imagen correspondiente//
+            img.alt = "Imagen de carta"; // Texto alternativo//
+            carta.appendChild(img); // Inserta la imagen dentro de la carta//
+            cartasVolteadas.push(carta); // Guarda la carta en el arreglo de cartas volteadas//
+
+            if (cartasVolteadas.length === 2) verificarPareja(); // Si hay dos cartas volteadas, verifica//
+        }
+
+        function verificarPareja() { // Declara la función "verificarPareja" que compara dos cartas//
+            bloqueo = true; // Bloquea temporalmente los clics//
+            const [c1, c2] = cartasVolteadas; // Obtiene las dos cartas volteadas//
+
+            if (c1.dataset.valor === c2.dataset.valor) { // Si coinciden//
+                aciertos++; // Incrementa aciertos//
+                cartasVolteadas = []; // Limpia el arreglo//
+                bloqueo = false; // Desbloquea//
+
+                if (aciertos === imagenes.length) { // Si ganó//
+                    mensaje.textContent = "🎉 ¡Ganaste! Has encontrado todas las parejas."; // Muestra mensaje de victoria//
+                    reiniciarBtn.style.display = "inline-block"; // Muestra botón reiniciar//
+                }
+            } else { // Si no coinciden//
+                setTimeout(() => { // Espera 900ms antes de voltear//
+                    c1.classList.remove("volteada");
+                    c2.classList.remove("volteada");
+                    c1.innerHTML = "";
+                    c2.innerHTML = "";
+                    cartasVolteadas = [];
+                    bloqueo = false;
+                }, 900);
+            }
+        }
+
+        reiniciarBtn.addEventListener("click", iniciarJuego); // Asigna la función al botón//
+        iniciarJuego(); // Llama al iniciar automáticamente//
+    </script> <!-- Cierra el bloque de código JavaScript -->
+</body> <!-- Cierra el contenido principal de la página -->
+</html> <!-- Cierra la estructura básica del documento HTML -->
